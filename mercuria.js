@@ -75,4 +75,3 @@ var MercuriaEvent = (function () {
     }; // notify
     return MercuriaEvent;
 })(); // MercuriaEvent
-//# sourceMappingURL=mercuria.js.map
