@@ -1,18 +1,36 @@
 /********************************************************
- * Event exchanged between publishers and subscribers.
- * This is based on Model-View-Controller Design Pattern.
+ * Mercuria is a small framework written in TypeScript
+ * and available also in JavaScript providing the
+ * publish/subscribe pattern (aka observer pattern).
+ * This is implemented through a single class called
+ * MercuriaEvent which instances are exchanged between
+ * publishers and subscribers.
  *
  * Usage note:
  * -----------
- * 1. The event should NOT be instanciated by its publisher.
- * 2. The publisher has to notify an event when needed.
- * 3. The subscribers have to subscribe to events.
- * 4. The publisher and the subscribers can be functions or methods.
+ * 1. The publisher has to notify an event when needed.
+ * 2. The subscribers have to subscribe to events.
+ * 3. The publisher and the subscribers can be functions or methods.
  *
- * Exemple:
+ * Example:
  * --------
  *
- * [ *** subscribers.ts *** ]
+ * ### publisher.ts
+ *
+ * var value: number = 0;
+ * declare var valueChanged: MercuriaEvent;
+ *
+ * function increase() {
+ *   value++;
+ *   valueChanged.notify(1);
+ * }
+ *
+ * window.onload = () {
+ *   increase();
+ * }
+ *
+ *
+ * ### subscribers.ts
  *
  * function log(delta: number) {
  *   console.log('Value has changed by ' + delta.toString());
@@ -29,21 +47,6 @@
  * valueChanged.addSubscriber( (...args) => { log(args[0]);     } );
  * valueChanged.addSubscriber( (...args) => { display(args[0]); } );
  * valueChanged.addSubscriber( ()        => { nothing();        } );
- *
- *
- * [ *** publisher.ts *** ]
- *
- * var value: number = 0;
- * declare var valueChanged: MercuriaEvent;
- *
- * function increase() {
- *   value++;
- *   valueChanged.notify(1);
- * }
- *
- * window.onload = () {
- *   increase();
- * }
  *
  *********************************************************/
 var MercuriaEvent = (function () {
@@ -72,3 +75,4 @@ var MercuriaEvent = (function () {
     }; // notify
     return MercuriaEvent;
 })(); // MercuriaEvent
+//# sourceMappingURL=mercuria.js.map

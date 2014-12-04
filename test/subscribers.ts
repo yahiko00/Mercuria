@@ -1,4 +1,5 @@
 ﻿/// <reference path='../mercuria.ts' />
+/// <reference path='publisher.ts' />
 
 function log(delta: number) {
   console.log('Value has changed by ' + delta.toString());
@@ -11,8 +12,7 @@ function display(delta: number) {
 function nothing() {
 }
 
-var valueChanged = new MercuriaEvent();
+declare var valueChanged: MercuriaEvent;
 valueChanged.addSubscriber((...args) => { log(args[0]); });
 valueChanged.addSubscriber((...args) => { display(args[0]); });
 valueChanged.addSubscriber(() => { nothing(); });
- 

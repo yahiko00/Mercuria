@@ -1,8 +1,7 @@
 ﻿/// <reference path='../mercuria.ts' />
-/// <reference path='subscribers.ts' />
 
 var value: number = 0;
-declare var valueChanged: MercuriaEvent;
+var valueChanged = new MercuriaEvent();
 
 function increase() {
   value++;
